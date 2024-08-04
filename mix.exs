@@ -53,7 +53,8 @@ defmodule LinkgenElixirPhoenix.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:sqids, "~> 0.1.0"}
     ]
   end
 

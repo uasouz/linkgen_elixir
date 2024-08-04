@@ -53,9 +53,12 @@ defmodule LinkgenElixirPhoenix.Linkgen do
 
   """
   def create_link(url) do
+    sqids = Sqids.new!()
+    rand_enum = for _ <- 1..3, do: :rand.uniform(1_000_000)
+
     %Link{}
     |> Link.changeset(%{
-      shortid: Ecto.UUID.generate(),
+      shortid: Sqids.encode!(sqids, rand_enum),
       originalURL: url
     })
     |> Repo.insert()
