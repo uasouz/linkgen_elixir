@@ -63,4 +63,17 @@ defmodule LinkgenElixirPhoenix.Linkgen do
     })
     |> Repo.insert()
   end
+
+  def remove_link(id) do
+    link = get_link!(id)
+
+    case link do
+      nil ->
+        {:error, :not_found}
+
+      _ ->
+        Repo.delete(link)
+        {:ok, :deleted}
+    end
+  end
 end

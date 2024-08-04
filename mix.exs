@@ -33,6 +33,11 @@ defmodule LinkgenElixirPhoenix.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.14"},
+      {:phoenix_html, "~> 4.1"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_html_helpers, "~> 1.0.1"},
+      {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
+      {:phoenix_view, "~> 2.0"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},

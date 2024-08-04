@@ -5,10 +5,26 @@ defmodule LinkgenElixirPhoenixWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, html: {LinkgenElixirPhoenixWeb.Layouts, :root}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
+  scope "/", LinkgenElixirPhoenixWeb do
+    pipe_through :browser
+
+    get "/", PageController, :home
+    live "/list", ListLive
+  end
+
   scope "/api", LinkgenElixirPhoenixWeb do
     pipe_through :api
-    post "linkgen", LinkgenController, :generate_minified_link
-    get "linkgen/:code", LinkgenController, :redirect_to_original_url
+    post "/linkgen", LinkgenController, :generate_minified_link
+    get "/linkgen/:code", LinkgenController, :redirect_to_original_url
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

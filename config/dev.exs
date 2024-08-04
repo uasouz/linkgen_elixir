@@ -54,6 +54,16 @@ config :linkgen_elixir_phoenix, LinkgenElixirPhoenixWeb.Endpoint,
 # configured to run both http and https servers on
 # different ports.
 
+# Watch static and templates for browser reloading.
+config :linkgen_elixir_phoenix, LinkgenElixirPhoenixWeb.Endpoint,
+  live_reload: [
+    patterns: [
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/linkgen_elixir_phoenix_web/(controllers|live|components)/.*(ex|heex)$"
+    ]
+  ]
+
 # Enable dev routes for dashboard and mailbox
 config :linkgen_elixir_phoenix, dev_routes: true
 
